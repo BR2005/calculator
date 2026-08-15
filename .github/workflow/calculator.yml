@@ -1,0 +1,11 @@
+name:calculator build and test
+on:
+  workflow_dispatch:
+jobs:
+  build and test:cd
+    runs-on:ubuntu-latest
+    steps:
+      -name:build panna poren
+      run:npm run build
+      -name:test panna poren
+      run:npm test

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simple Calculator</title>
+    <style>
+      body { font-family: system-ui, Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f3f4f6 }
+      .calculator { background:#fff; padding:16px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:320px }
+      .display { height:64px; background:#111827; color:#fff; border-radius:8px; padding:12px; font-size:28px; text-align:right; overflow:hidden }
+      .buttons { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px }
+      button { height:56px; font-size:18px; border:0; border-radius:8px; cursor:pointer }
+      button.op { background:#f59e0b; color:#fff }
+      button.action { background:#ef4444; color:#fff }
+      button.func { background:#e5e7eb }
+      button.number { background:#f3f4f6 }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div id="display" class="display">0</div>
+      <div class="buttons">
+        <button class="func" data-action="clear">C</button>
+        <button class="func" data-action="del">⌫</button>
+        <button class="func" data-action="percent">%</button>
+        <button class="op" data-op="/">÷</button>
+
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="op" data-op="*">×</button>
+
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="op" data-op="-">−</button>
+
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="op" data-op="+">+</button>
+
+        <button class="number">0</button>
+        <button class="number">.</button>
+        <button class="func" data-action="equals" style="grid-column:span 2; background:#10b981; color:#fff">=</button>
+      </div>
+    </div>
+    <script src="calculator.js"></script>
+  </body>
+</html>
