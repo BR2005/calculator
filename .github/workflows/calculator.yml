@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - master
+
 env:
   DOCKER_IMAGE_NAME: br2005/bharath:gta
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -27,27 +29,31 @@ jobs:
 
       - name: Test
         run: npm test
-      - name: docker image build
+
+      - name: Docker image build
         run: docker build -t $DOCKER_IMAGE_NAME .
-      - name: docker image login
+
+      - name: Docker image login
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}  
-      - name: docker image push
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker image push
         run: docker push $DOCKER_IMAGE_NAME
 
   Deployment-job:
     needs: build-and-test
     runs-on: ubuntu-latest
+
     steps:
-      - name: server ssh
-        uses : appleboy/ssh-action@v1
+      - name: Server SSH
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-           docker pull ${{ env.DOCKER_IMAGE_NAME }}
-           
+            docker pull ${{ env.DOCKER_IMAGE_NAME }}
+    
