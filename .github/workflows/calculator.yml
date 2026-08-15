@@ -27,7 +27,7 @@ jobs:
       - name: Test
         run: npm test
       - name: docker image build
-        run: docker build -t br2005/bharath:gta.
+        run: docker build -t br2005/bharath:gta .
       - name: docker image login
         uses: docker/login-action@v3
         with:
