@@ -55,5 +55,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
+            docker rmi ${{ env.DOCKER_IMAGE_NAME }} || true
             docker pull ${{ env.DOCKER_IMAGE_NAME }}
-    
+            docker stop calculator || true
+            docker rm calculator || true
+            docker run -d -p 30:3000 --name calculator ${{ env.DOCKER_IMAGE_NAME }}
