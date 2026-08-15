@@ -48,6 +48,6 @@ jobs:
           username: z7bharathcyber 
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          scripts: |
+          script: |
            docker pull ${{ env.DOCKER_IMAGE_NAME }}
            
