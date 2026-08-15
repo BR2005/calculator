@@ -13,6 +13,12 @@ const mime = {
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
+    if (req.url === '/health') {
+      res.setHeader('Content-Type', 'text/plain')
+      res.end('hello bro')
+      return
+    }
+
     let filePath = req.url === '/' ? 'calculator.html' : req.url.slice(1)
     if (filePath.includes('..')) { res.statusCode = 400; res.end('Bad Request'); return }
     fs.readFile(path.join(__dirname, filePath), (err, data) => {
