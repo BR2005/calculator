@@ -1,7 +1,9 @@
 name: calculator build and test
 
 on:
-  workflow_dispatch:
+  push:
+  branches:
+    - master
 
 jobs:
   build-and-test:
