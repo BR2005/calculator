@@ -2,8 +2,8 @@ name: calculator build and test
 
 on:
   push:
-  branches:
-    - master
+    branches:
+      - master
 
 jobs:
   build-and-test:
