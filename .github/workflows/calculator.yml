@@ -9,8 +9,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/setup-node@v7
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: code irrukudha
-        run: ls
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
