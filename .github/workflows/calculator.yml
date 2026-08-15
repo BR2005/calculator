@@ -1,11 +1,18 @@
-name:calculator build and test
+name: calculator build and test
+
 on:
   workflow_dispatch:
+
 jobs:
-  build and test:cd
-    runs-on:ubuntu-latest
+  build-and-test:
+    runs-on: ubuntu-latest
+
     steps:
-      -name:build panna poren
-      run:npm run build
-      -name:test panna poren
-      run:npm test
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: build panna poren
+        run: npm run build
+
+      - name: test panna poren
+        run: npm test
